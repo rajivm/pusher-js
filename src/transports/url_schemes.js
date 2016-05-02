@@ -20,7 +20,8 @@
     /** Standard WebSocket URL scheme. */
     ws: {
       getInitial: function(key, params) {
-        return getGenericURL("ws", params, getGenericPath(key, "flash=false"));
+        var path = (params.wsPath || "") + getGenericPath(key, "flash=false");
+        return getGenericURL("ws", params, path);
       }
     },
     /** SockJS URL scheme. Supplies the path separately from the initial URL. */

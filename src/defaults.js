@@ -44,7 +44,8 @@
     return [
       [":def", "ws_options", {
         hostUnencrypted: config.wsHost + ":" + config.wsPort,
-        hostEncrypted: config.wsHost + ":" + config.wssPort
+        hostEncrypted: config.wsHost + ":" + config.wssPort,
+        wsPath: config.wsPath
       }],
       [":def", "wss_options", [":extend", ":ws_options", {
         encrypted: true

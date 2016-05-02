@@ -67,6 +67,15 @@ describe("Host/Port Configuration", function() {
         "wss://example.org:4444/app/foobar?protocol=7&client=js&version=<VERSION>&flash=false"
       );
     });
+
+    it("should connect using wsPath when specified in options", function() {
+      pusher = new Pusher("foobar", { wsHost: "example.org", wssPort: 4444, wsPath: '/path', encrypted: true });
+      pusher.connect();
+
+      expect(window.WebSocket).toHaveBeenCalledWith(
+        "wss://example.org:4444/path/app/foobar?protocol=7&client=js&version=<VERSION>&flash=false"
+      );
+    });
   });
 
   describe("SockJS", function() {

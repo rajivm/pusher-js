@@ -4,6 +4,7 @@
       wsHost: Pusher.host,
       wsPort: Pusher.ws_port,
       wssPort: Pusher.wss_port,
+      wsPath: Pusher.ws_path,
       httpHost: Pusher.sockjs_host,
       httpPort: Pusher.sockjs_http_port,
       httpsPort: Pusher.sockjs_https_port,

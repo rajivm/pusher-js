@@ -38,6 +38,28 @@ describe("Transports", function() {
       );
     });
 
+    it("should generate correct unencrypted URLs with custom path prefix", function() {
+      var url = Pusher.WSTransport.hooks.urls.getInitial("foobar", {
+        encrypted: false,
+        hostUnencrypted: "example.com:123",
+        wsPath: "/path"
+      });
+      expect(url).toEqual(
+        "ws://example.com:123/path/app/foobar?protocol=7&client=js&version=<VERSION>&flash=false"
+      );
+    });
+
+    it("should generate correct encrypted URLs with custom path prefix", function() {
+      var url = Pusher.WSTransport.hooks.urls.getInitial("foobar", {
+        encrypted: true,
+        hostEncrypted: "example.org:321",
+        wsPath: "/path"
+      });
+      expect(url).toEqual(
+        "wss://example.org:321/path/app/foobar?protocol=7&client=js&version=<VERSION>&flash=false"
+      );
+    });
+
     it("should not have a resource file", function() {
       expect(Pusher.WSTransport.hooks.file).toBe(undefined);
     });
